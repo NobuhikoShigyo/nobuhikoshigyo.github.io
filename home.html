@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Nobuhiko Shigyo - Home</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Ubuntu Sans', sans-serif !important;
+        }
+        h2.custom-font {
+            font-family: 'Caveat', sans-serif;
+            font-size: 54px;
+        }
+        .content {
+            flex: 1;
+        }
+        footer {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+        #map {
+            height: 500px;
+            width: 100%;
+            margin-top: 20px;
+        }        
+    </style>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Nobuhiko Shigyo, Ph.D.</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="home.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="publications.html">Publications</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                </ol>
+                <!-- Slides -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-4"><img src="images/ChichibuForest.jpeg" class="d-block w-100" alt="First slide"></div>
+                            <div class="col-md-4"><img src="images/Fungi.jpg" class="d-block w-100" alt="Second slide"></div>
+                            <div class="col-md-4"><img src="images/MountainBirch.jpg" class="d-block w-100" alt="Third slide"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-4"><img src="images/SoilProfile.jpg" class="d-block w-100" alt="Fourth slide"></div>
+                            <div class="col-md-4"><img src="images/LitterDecomp.JPG" class="d-block w-100" alt="Fifth slide"></div>
+                            <div class="col-md-4"><img src="images/CedarForest.JPG" class="d-block w-100" alt="Sixth slide"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Controls -->
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center custom-font">Structure & Function of Forest Soil Microbiome</h2>
+            <p class="text-center">Beneath the ground we walk on every day lies an invisible world teeming with tiny living organisms – the soil microbiome. In recent years, the proliferation of advanced '<i>-omics</i>' analysis has allowed us to uncover deeper insights into the lives and roles of these microbial communities. Using a multifaceted approach that combines molecular experiments, field observations, manipulation studies, and statistical modeling, I'm exploring questions about how these microscopic life forms are distributed and how they interact with the forest ecosystem.</p>
+            <h4>Current research topics</h4>
+            <ul>
+                <li>Dynamics of soil microbial communities at various spatio-temporal scales</li>
+                <li>Microbial community ecology in litter decomposition processes</li>
+                <li>Importance of non-symbiotic nitrogen-fixing bacteria in temperate forest ecosystems</li>
+                <li>Roles of mycorrhizal communities in local adaptation of tree species</li>
+            </ul>
+            <h4>Research Locations</h4>
+               <div id="map"></div> 
+        </div>
+    </div>
+</div>
+
+<!-- Initialize map and add markers -->
+    <script>
+        // Initialize map centered on Japan
+        var map = L.map('map').setView([35.6762, 139.6503], 4); // Coordinates for Japan (Tokyo)
+
+        // Load and display OpenStreetMap tiles
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://carto.com/">CartoDB</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 18
+        }).addTo(map);
+
+        // Add markers for research locations
+        var locations = [
+            { lat: 44.386, lon: 142.280, name: "Uryu" },
+            { lat: 44.329, lon: 142.454, name: "Nayoro" },
+            { lat: 43.340, lon: 142.632, name: "Dairoku" },
+            { lat: 38.934, lon: 140.245, name: "Kamabuchi" },
+            { lat: 36.681, lon: 137.590, name: "Nekomatayama" },
+            { lat: 36.514, lon: 140.307, name: "Katsura" },
+            { lat: 36.120, lon: 140.100, name: "Tsukuba" },
+            { lat: 35.933, lon: 138.867, name: "Chichibu" },
+            { lat: 35.940, lon: 138.470, name: "Yatsugatake" },
+            { lat: 35.193, lon: 140.109, name: "Chiba" },
+            { lat: 33.136, lon: 130.708, name: "Kahoku" },
+            { lat: 31.866, lon: 131.275, name: "Tano" },
+            { lat: 27.093, lon: 142.217, name: "Chichijima" },
+            { lat: 26.620, lon: 142.180, name: "Hahajima" }
+        ];
+
+        // Add each marker to the map
+        locations.forEach(function(location) {
+            L.marker([location.lat, location.lon])
+                .addTo(map)
+                .bindPopup(location.name);
+        });
+    </script>
+
+<!-- Footer -->
+<footer>
+    <p>Copyright (C) 2024 Nobuhiko Shigyo, All Rights Reserved.</p>
+</footer>
+</body>
+</html>
