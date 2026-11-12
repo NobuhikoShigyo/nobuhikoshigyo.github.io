@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nobuhikoshigyo.github.io/sitemap.xml
